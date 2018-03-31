@@ -29,10 +29,15 @@ public class StringManTest {
 
         System.out.println("After reversing by using static method: stringMan = " + stringMan + ", HashCode: " + Objects.hashCode(stringMan));
 
-
         System.out.println("After reversing by using object method: stringMan = " + stringMan.reverse() + ", HashCode: " + Objects.hashCode(stringMan));
 
+        System.out.println("Delete: " + StringMan.deleteString("a1bcb2db", "b"));
 
+        System.out.println("Surround all: " + new StringMan("V1s23A123B123C").surroundAll("123", "[", "]"));
+
+        System.out.println("Detach surround: " + new StringMan("<html->>").detachSurround("<", ">"));
+
+        System.out.println("Detach all surroundings: " + new StringMan("[123][456][7[00000]89]").detachAllSurroundings("[", "]"));
 
         System.out.println(StringMan.getConsecutive("=", 150));
 

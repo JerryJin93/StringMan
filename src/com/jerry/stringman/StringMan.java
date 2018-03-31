@@ -2,12 +2,13 @@ package com.jerry.stringman;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.Random;
 
 public class StringMan {
 
     private String stringMan;
+
+    public int[] pattern;
 
     private static final char[] DICTIONARY = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
@@ -49,6 +50,7 @@ public class StringMan {
         return string.charAt(index);
     }
 
+    //OK
     /**
      * Get all indexes of the specific string.
      * @param str The string which you want to look up for all its indexes.
@@ -68,7 +70,7 @@ public class StringMan {
         }
         return indexes;
     }
-
+    //OK
     public static int[] getAllIndexes(String origin, String str) {
         return new StringMan(origin).allIndexesOf(str);
     }
@@ -184,7 +186,7 @@ public class StringMan {
             for (int i = 0; i < indexes.length; i++){
                 builder.delete(indexes[i], indexes[i] + toDelete.length());
                 if (i + 1 < indexes.length){
-                    indexes[i + 1] -= toDelete.length();
+                    indexes[i + 1] -= toDelete.length() * (i + 1);
                 }
             }
             setStringMan(builder.toString());
@@ -196,6 +198,19 @@ public class StringMan {
 
     public static StringMan deleteString(String origin, String toDelete) {
         return new StringMan(origin).deleteString(toDelete);
+    }
+
+    public StringMan delete(int start, int end){
+        if (stringMan != null){
+            StringBuilder builder = new StringBuilder(stringMan);
+            builder.delete(start, end);
+            setStringMan(builder.toString());
+        }
+        return this;
+    }
+
+    public static String delete(String origin, int start, int end){
+        return new StringMan(origin).delete(start, end).toString();
     }
 
     public int length(){
@@ -219,6 +234,127 @@ public class StringMan {
 
 //    public static String toCamelCase(String origin){
 //
+//    }
+
+    /**
+     *
+     * @param start Inclusive.
+     * @param end Exclusive.
+     * @return
+     */
+    public StringMan subString(int start, int end){
+        if (stringMan != null){
+            setStringMan(stringMan.substring(start, end));
+        }
+        return this;
+    }
+
+    /**
+     *
+     * @param prefix The prefix string you want to insert.
+     * @param suffix The suffix string you want to insert.
+     * @return Current StringMan object that has been processed.
+     */
+    public StringMan surround(String prefix, String suffix){
+        if (stringMan != null){
+            setStringMan(new StringBuilder(stringMan).insert(0, prefix).append(suffix).toString());
+        }
+        else {
+            setStringMan(prefix + suffix);
+        }
+        return this;
+    }
+
+    /**
+     * Surround a string with prefix and suffix.
+     * @param origin The origin string you want to process.
+     * @param prefix The prefix string you want to insert.
+     * @param suffix The suffix string you want to insert.
+     * @return Processed string.
+     */
+    public static String surround(String origin, String prefix, String suffix){
+        return new StringMan(origin).surround(prefix, suffix).toString();
+    }
+
+    public StringMan surroundAll(String strToSurround, String prefix, String suffix){
+        if (stringMan != null){
+            int[] indexes = allIndexesOf(strToSurround);
+            StringBuilder builder = new StringBuilder(stringMan);
+            for (int i = 0; i < indexes.length; i++){
+                builder.insert(indexes[i], prefix);
+                indexes[i] += prefix.length();
+                builder.insert(indexes[i] + strToSurround.length(), suffix);
+                indexes = getAllIndexes(builder.toString(), strToSurround);
+            }
+            setStringMan(builder.toString());
+        }
+        else {
+            setStringMan(prefix + suffix);
+        }
+        return this;
+    }
+
+    public static String surroundAll(String origin, String strToSurround, String prefix, String suffix){
+        return new StringMan(origin).surroundAll(strToSurround, prefix, suffix).toString();
+    }
+
+    public StringMan detachSurround(String prefix, String suffix){
+        if (stringMan != null){
+            if (stringMan.contains(prefix)){
+                delete(0, prefix.length());
+            }
+            if (stringMan.contains(suffix)){
+                int indexOfSuffix = stringMan.indexOf(suffix);
+                delete(indexOfSuffix, indexOfSuffix + suffix.length());
+            }
+        }
+        return this;
+    }
+
+    public static String detachSurround(String origin, String prefix, String suffix){
+        return new StringMan(origin).detachSurround(prefix, suffix).toString();
+    }
+
+    public StringMan detachAllSurroundings(String prefix, String suffix){
+        if (stringMan != null){
+            int[] indexesPrefix = allIndexesOf(prefix);
+            int[] indexesSuffix = allIndexesOf(suffix);
+            StringBuilder builder = new StringBuilder(stringMan);
+            if (indexesPrefix.length != 0){
+                for (int i = 0; i < indexesPrefix.length; i++){
+                    builder.delete(indexesPrefix[i], indexesPrefix[i] + prefix.length());
+                    if (i + 1 < indexesPrefix.length){
+                        indexesPrefix[i + 1] -= prefix.length() * (i + 1);
+                    }
+                }
+                setStringMan(builder.toString());
+            }
+            if (indexesSuffix.length != 0){
+                indexesSuffix = getAllIndexes(builder.toString(), suffix);
+                for (int i = 0; i < indexesSuffix.length; i++){
+                    builder.delete(indexesSuffix[i], indexesSuffix[i] + suffix.length());
+                    if(i + 1 < indexesSuffix.length){
+                        indexesSuffix[i + 1] -= suffix.length() * (i + 1);
+                    }
+                }
+                setStringMan(builder.toString());
+            }
+        }
+        return this;
+    }
+
+    public static String detachAllSurroundings(String origin, String prefix, String suffix){
+        return new StringMan(origin).detachAllSurroundings(prefix, suffix).toString();
+    }
+
+//    public String encode(){
+//        Random random = new Random();
+//        pattern = new int[random.nextInt(stringMan.length())];
+//        for (int i = 0; i < pattern.length; i++){
+//            pattern[i] = random.nextInt(stringMan.length());
+//            insert(pattern[i], getRandomString(pattern[i]));
+//        }
+//        return stringMan;
 //    }
 
     public static String getConsecutive(String str, int num){
