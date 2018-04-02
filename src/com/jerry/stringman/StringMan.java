@@ -357,6 +357,37 @@ public class StringMan {
 //        return stringMan;
 //    }
 
+    public StringMan getComplementaryOf(String string){
+        if (stringMan != null && !stringMan.equals("")){
+            if (string != null && !string.equals("")){
+                if (stringMan.length() >= string.length()){
+                    if (stringMan.contains(string)){
+                        setStringMan(deleteString(string).toString());
+                    }
+                    else {
+                        setStringMan(null);
+                    }
+                }
+                else {
+                    if (string.contains(stringMan)){
+                        setStringMan(deleteString(string, stringMan).toString());
+                    }
+                    else {
+                        setStringMan(null);
+                    }
+                }
+            }
+        }
+        else {
+            setStringMan(string);
+        }
+        return this;
+    }
+
+    public static String getComplementary(String s1, String s2){
+        return new StringMan(s1).getComplementaryOf(s2).toString();
+    }
+
     public static String getConsecutive(String str, int num){
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < num; i++){

@@ -39,6 +39,9 @@ public class StringManTest {
 
         System.out.println("Detach all surroundings: " + new StringMan("[123][456][7[00000]89]").detachAllSurroundings("[", "]"));
 
+        long a = System.currentTimeMillis();
+        System.out.println("Get complementary 1: " + StringMan.getComplementary(StringMan.getRandomString(3000000), "A") + "\n Consumes: " + (System.currentTimeMillis() - a) + "ms");
+
         System.out.println(StringMan.getConsecutive("=", 150));
 
     }
