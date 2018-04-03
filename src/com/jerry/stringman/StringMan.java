@@ -1,6 +1,7 @@
 package com.jerry.stringman;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -237,10 +238,10 @@ public class StringMan {
 //    }
 
     /**
-     *
+     * Get the substring of stringMan.
      * @param start Inclusive.
      * @param end Exclusive.
-     * @return
+     * @return The substring from start to end.
      */
     public StringMan subString(int start, int end){
         if (stringMan != null){
@@ -315,7 +316,13 @@ public class StringMan {
         return new StringMan(origin).detachSurround(prefix, suffix).toString();
     }
 
-    public StringMan detachAllSurroundings(String prefix, String suffix){
+    /**
+     * Detach all specific surrounds of current object's string value.
+     * @param prefix The prefix string you want to detach.
+     * @param suffix The suffix string you wang to detach.
+     * @return Current object after being processed.
+     */
+    public StringMan detachAllSurrounds(String prefix, String suffix){
         if (stringMan != null){
             int[] indexesPrefix = allIndexesOf(prefix);
             int[] indexesSuffix = allIndexesOf(suffix);
@@ -343,8 +350,8 @@ public class StringMan {
         return this;
     }
 
-    public static String detachAllSurroundings(String origin, String prefix, String suffix){
-        return new StringMan(origin).detachAllSurroundings(prefix, suffix).toString();
+    public static String detachAllSurrounds(String origin, String prefix, String suffix){
+        return new StringMan(origin).detachAllSurrounds(prefix, suffix).toString();
     }
 
 //    public String encode(){
@@ -386,6 +393,211 @@ public class StringMan {
 
     public static String getComplementary(String s1, String s2){
         return new StringMan(s1).getComplementaryOf(s2).toString();
+    }
+
+    public char[] toCharArray(){
+        if (stringMan != null){
+            char[] chars = stringMan.toCharArray();
+            return chars;
+        }
+        else {
+            return null;
+        }
+    }
+
+    public static char[] toCharArray(String origin){
+        return origin.toCharArray();
+    }
+
+    public String[] toStringArray(){
+        if (stringMan != null){
+            char[] chars = stringMan.toCharArray();
+            String[] array = new String[chars.length];
+            for (int i = 0; i < array.length; i++){
+                array[i] = chars[i] + "";
+            }
+            return array;
+        }
+        else {
+            return null;
+        }
+    }
+
+    public static String[] toStringArray(String origin){
+        return new StringMan(origin).toStringArray();
+    }
+
+    public StringMan shuffle(){
+        if (stringMan != null){
+            char[] chars = stringMan.toCharArray();
+            int[] randomIndex = randomIndex();
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < stringMan.length(); i++){
+                builder.append(chars[randomIndex[i]]);
+            }
+            setStringMan(builder.toString());
+        }
+        return this;
+    }
+
+    public static String shuffle(String origin){
+        return new StringMan(origin).shuffle().toString();
+    }
+
+    public int[] randomIndex(){
+        if (stringMan != null){
+            int len = stringMan.length();
+            int[] randomIndex = new int[stringMan.length()];
+            List<Integer> tmpIndexList = new ArrayList<>();
+            Random random = new Random();
+
+            for (int i = 0; i < stringMan.length(); i++){
+                tmpIndexList.add(i);
+            }
+
+            for (int i = 0; i < randomIndex.length; i++){
+                int tmp = random.nextInt(len--);
+                randomIndex[i] = tmpIndexList.get(tmp);
+                tmpIndexList.remove(tmp);
+            }
+
+            return randomIndex;
+        }
+        else {
+            return null;
+        }
+    }
+
+    public static int[] randomIndex(int len){
+        int[] randomIndex = new int[len];
+        List<Integer> tmpIndexList = new ArrayList<>();
+        Random random = new Random();
+
+        for (int i = 0; i < len; i++){
+            tmpIndexList.add(i);
+        }
+
+        for (int i = 0; i < randomIndex.length; i++){
+            int tmp = random.nextInt(len--);
+            randomIndex[i] = tmpIndexList.get(tmp);
+            tmpIndexList.remove(tmp);
+        }
+
+        return randomIndex;
+    }
+
+    private int randomInt(int start, int end){
+        Random random = new Random();
+        int randomInt = random.nextInt(end);
+        while (randomInt < start){
+            randomInt = random.nextInt(end);
+        }
+        return randomInt;
+    }
+
+    public static boolean intArrayHasSameNumbers(int[] array){
+        boolean b = false;
+
+        for (int i = 0; i < array.length; i++){
+            for (int j = i + 1; j < array.length; j++){
+                if (array[i] == array[j]){
+                    b = true;
+                    break;
+                }
+            }
+            if (b){
+                break;
+            }
+        }
+        return b;
+    }
+
+    private static int firstSameIndexOfIntArray(int[] array){
+        int index = -1;
+        boolean flag = false;
+        for (int i = 0; i < array.length; i++){
+            for (int j = i + 1; j < array.length; j++){
+                if (array[i] == array[j]){
+                    flag = true;
+                    index = i;
+                    break;
+                }
+            }
+            if (flag){
+                break;
+            }
+        }
+        return index;
+    }
+
+    public static boolean intArrayHasDifferentNumbers(int[] array){
+        boolean b = false;
+
+        for (int i = 0; i < array.length; i++){
+            for (int j = i + 1; j < array.length; j++){
+                if (array[i] != array[j]){
+                    b = true;
+                    break;
+                }
+            }
+            if (b){
+                break;
+            }
+        }
+        return b;
+    }
+
+    public static int[] trimIntArray(int[] array){
+        int[] tmp = array;
+        int[] result;
+        List<Integer> integers;
+        try{
+            integers = intArrayToList(array, 0, array.length - 1);
+            while (intArrayHasSameNumbers(tmp)){
+                int index = firstSameIndexOfIntArray(tmp);
+                if (index != -1){
+                    integers.remove(index);
+                    tmp = integerListToArray(integers);
+                }
+            }
+            result = integerListToArray(integers);
+            return result;
+        } catch (IndexOutOfBoundsException e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static List<Integer> intArrayToList(int[] intArray, int start, int end) throws IndexOutOfBoundsException{
+        if ((start >= 0) && (start <= intArray.length - 1) && ((end >= 0) && (end <= intArray.length - 1))){
+            List<Integer> integers = new ArrayList<>();
+            if (start > end){
+                int tmp = start;
+                start = end;
+                end = tmp;
+            }
+            for (int i = start; i <= end; i++){
+                integers.add(intArray[i]);
+            }
+            return integers;
+        }
+        else {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
+    public static int[] integerListToArray(List<Integer> integerList){
+        if (integerList != null){
+            int[] array = new int[integerList.size()];
+            for (int i = 0; i < array.length; i++){
+                array[i] = integerList.get(i);
+            }
+            return array;
+        }
+        else {
+            return null;
+        }
     }
 
     public static String getConsecutive(String str, int num){
