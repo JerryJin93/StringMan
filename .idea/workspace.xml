@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47ec3f0b-90de-420c-accd-7afea8ecefd8" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jerry/stringman/StringMan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jerry/stringman/StringMan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jerry/test/StringManTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jerry/test/StringManTest.java" afterDir="false" />
@@ -20,11 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StringManTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StringManTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jerry/test/StringManTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="601">
-              <caret line="59" column="69" selection-start-line="59" selection-start-column="69" selection-end-line="59" selection-end-column="69" />
+            <state relative-caret-position="12">
+              <caret line="36" column="42" lean-forward="true" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -32,26 +31,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StringMan.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StringMan.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/jerry/stringman/StringMan.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-5823">
-              <caret line="240" column="38" selection-start-line="240" selection-start-column="38" selection-end-line="240" selection-end-column="38" />
+            <state relative-caret-position="387">
+              <caret line="781" column="19" selection-start-line="781" selection-start-column="19" selection-end-line="781" selection-end-column="19" />
               <folding>
-                <element signature="e#12529#12530#0" expanded="true" />
-                <element signature="e#12572#12573#0" expanded="true" />
-                <element signature="e#13002#13003#0" expanded="true" />
-                <element signature="e#13037#13038#0" expanded="true" />
-                <element signature="e#14168#14169#0" expanded="true" />
-                <element signature="e#14233#14234#0" expanded="true" />
-                <element signature="e#18762#18763#0" expanded="true" />
-                <element signature="e#18809#18810#0" expanded="true" />
-                <element signature="e#18855#18856#0" expanded="true" />
-                <element signature="e#18902#18903#0" expanded="true" />
-                <element signature="e#19372#19373#0" expanded="true" />
-                <element signature="e#19411#19412#0" expanded="true" />
-                <element signature="e#19457#19458#0" expanded="true" />
-                <element signature="e#19489#19490#0" expanded="true" />
+                <element signature="e#18533#18534#0" expanded="true" />
+                <element signature="e#18582#18583#0" expanded="true" />
+                <element signature="e#18641#18642#0" expanded="true" />
+                <element signature="e#18679#18680#0" expanded="true" />
+                <element signature="e#24960#24961#0" expanded="true" />
+                <element signature="e#25007#25008#0" expanded="true" />
+                <element signature="e#25053#25054#0" expanded="true" />
+                <element signature="e#25100#25101#0" expanded="true" />
+                <element signature="e#25570#25571#0" expanded="true" />
+                <element signature="e#25609#25610#0" expanded="true" />
+                <element signature="e#25655#25656#0" expanded="true" />
+                <element signature="e#25687#25688#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -94,6 +91,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -130,9 +128,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -239,11 +236,12 @@
       <workItem from="1522671572378" duration="74000" />
       <workItem from="1522672433923" duration="11000" />
       <workItem from="1522732325577" duration="17639000" />
+      <workItem from="1522933145719" duration="5710000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56159000" />
+    <option name="totallyTimeSpent" value="61869000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -262,9 +260,8 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3281075" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20149253" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20362474" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32997763" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -276,6 +273,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32997763" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,10 +310,41 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="17" />
+      <option name="time" value="18" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/jerry/test/StringManTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1121">
+          <caret line="59" column="69" selection-start-line="59" selection-start-column="69" selection-end-line="59" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jerry/stringman/StringMan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4560">
+          <caret line="240" column="38" selection-start-line="240" selection-start-column="38" selection-end-line="240" selection-end-column="38" />
+          <folding>
+            <element signature="e#18533#18534#0" expanded="true" />
+            <element signature="e#18582#18583#0" expanded="true" />
+            <element signature="e#18641#18642#0" expanded="true" />
+            <element signature="e#18679#18680#0" expanded="true" />
+            <element signature="e#24960#24961#0" expanded="true" />
+            <element signature="e#25007#25008#0" expanded="true" />
+            <element signature="e#25053#25054#0" expanded="true" />
+            <element signature="e#25100#25101#0" expanded="true" />
+            <element signature="e#25570#25571#0" expanded="true" />
+            <element signature="e#25609#25610#0" expanded="true" />
+            <element signature="e#25655#25656#0" expanded="true" />
+            <element signature="e#25687#25688#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jerry/test/StringManTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="798">
@@ -331,20 +360,18 @@
         <state relative-caret-position="6878">
           <caret line="388" column="5" selection-start-line="388" selection-start-column="5" selection-end-line="388" selection-end-column="5" />
           <folding>
-            <element signature="e#12529#12530#0" expanded="true" />
-            <element signature="e#12572#12573#0" expanded="true" />
-            <element signature="e#13002#13003#0" expanded="true" />
-            <element signature="e#13037#13038#0" expanded="true" />
-            <element signature="e#14168#14169#0" expanded="true" />
-            <element signature="e#14233#14234#0" expanded="true" />
-            <element signature="e#18762#18763#0" expanded="true" />
-            <element signature="e#18809#18810#0" expanded="true" />
-            <element signature="e#18855#18856#0" expanded="true" />
-            <element signature="e#18902#18903#0" expanded="true" />
-            <element signature="e#19372#19373#0" expanded="true" />
-            <element signature="e#19411#19412#0" expanded="true" />
-            <element signature="e#19457#19458#0" expanded="true" />
-            <element signature="e#19489#19490#0" expanded="true" />
+            <element signature="e#18533#18534#0" expanded="true" />
+            <element signature="e#18582#18583#0" expanded="true" />
+            <element signature="e#18641#18642#0" expanded="true" />
+            <element signature="e#18679#18680#0" expanded="true" />
+            <element signature="e#24960#24961#0" expanded="true" />
+            <element signature="e#25007#25008#0" expanded="true" />
+            <element signature="e#25053#25054#0" expanded="true" />
+            <element signature="e#25100#25101#0" expanded="true" />
+            <element signature="e#25570#25571#0" expanded="true" />
+            <element signature="e#25609#25610#0" expanded="true" />
+            <element signature="e#25655#25656#0" expanded="true" />
+            <element signature="e#25687#25688#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -484,13 +511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_112/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1254">
-          <caret line="110" column="19" selection-start-line="110" selection-start-column="19" selection-end-line="110" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/Program Files/Java/jdk1.8.0_112/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -498,35 +518,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jerry/test/StringManTest.java">
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_112/src.zip!/java/lang/String.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
-          <caret line="59" column="69" selection-start-line="59" selection-start-column="69" selection-end-line="59" selection-end-column="69" />
+        <state relative-caret-position="-850">
+          <caret line="2574" column="37" selection-start-line="2574" selection-start-column="37" selection-end-line="2574" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#111196#111197#0" expanded="true" />
+            <element signature="e#111251#111252#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jerry/stringman/StringMan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5823">
-          <caret line="240" column="38" selection-start-line="240" selection-start-column="38" selection-end-line="240" selection-end-column="38" />
+        <state relative-caret-position="387">
+          <caret line="781" column="19" selection-start-line="781" selection-start-column="19" selection-end-line="781" selection-end-column="19" />
           <folding>
-            <element signature="e#12529#12530#0" expanded="true" />
-            <element signature="e#12572#12573#0" expanded="true" />
-            <element signature="e#13002#13003#0" expanded="true" />
-            <element signature="e#13037#13038#0" expanded="true" />
-            <element signature="e#14168#14169#0" expanded="true" />
-            <element signature="e#14233#14234#0" expanded="true" />
-            <element signature="e#18762#18763#0" expanded="true" />
-            <element signature="e#18809#18810#0" expanded="true" />
-            <element signature="e#18855#18856#0" expanded="true" />
-            <element signature="e#18902#18903#0" expanded="true" />
-            <element signature="e#19372#19373#0" expanded="true" />
-            <element signature="e#19411#19412#0" expanded="true" />
-            <element signature="e#19457#19458#0" expanded="true" />
-            <element signature="e#19489#19490#0" expanded="true" />
+            <element signature="e#18533#18534#0" expanded="true" />
+            <element signature="e#18582#18583#0" expanded="true" />
+            <element signature="e#18641#18642#0" expanded="true" />
+            <element signature="e#18679#18680#0" expanded="true" />
+            <element signature="e#24960#24961#0" expanded="true" />
+            <element signature="e#25007#25008#0" expanded="true" />
+            <element signature="e#25053#25054#0" expanded="true" />
+            <element signature="e#25100#25101#0" expanded="true" />
+            <element signature="e#25570#25571#0" expanded="true" />
+            <element signature="e#25609#25610#0" expanded="true" />
+            <element signature="e#25655#25656#0" expanded="true" />
+            <element signature="e#25687#25688#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jerry/test/StringManTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="36" column="42" lean-forward="true" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -53,7 +53,7 @@ public class StringMan {
 
     //OK
     /**
-     * Get all indexes of the specific string.
+     * Gets all indexes of the specific string.
      * @param str The string which you want to look up for all its indexes.
      * @return An array of all indexes.
      * @throws NullPointerException Throws exception when this.stringMan is null.
@@ -77,7 +77,7 @@ public class StringMan {
     }
 
     /**
-     * Generate a string by picking random character from the dictionary.
+     * Generates a string by picking random character from the dictionary.
      * @param length The length of the string to generate.
      * @return Generated string.
      */
@@ -267,7 +267,7 @@ public class StringMan {
     }
 
     /**
-     * Surround a string with prefix and suffix.
+     * Surrounds a string with prefix and suffix.
      * @param origin The origin string you want to process.
      * @param prefix The prefix string you want to insert.
      * @param suffix The suffix string you want to insert.
@@ -600,6 +600,197 @@ public class StringMan {
         }
     }
 
+    /**
+     * Returns true if and only if the stringMan contains another specific string.
+     * @param string The specific string to search for.
+     * @return True if stringMan contains string, false otherwise.
+     */
+    public boolean contains(String string){
+        return stringMan.contains(string);
+    }
+
+    /**
+     * Returns true if and only if the one specific string contains another specific string.
+     * @param s1 The specific string to check.
+     * @param s2 The specific string to search for.
+     * @return True if s1 contains s2, false otherwise.
+     */
+    public static boolean contains(String s1, String s2){
+        return s1.contains(s2);
+    }
+
+    /**
+     * Returns true if and only if the stringMan contains another specific string under the condition of its sensitivity.
+     * @param string The string to search for.
+     * @param sensitive The specific string is either sensitive to the upper/lower case or not.
+     * @return True if stringMan contains string, false otherwise.
+     */
+    public boolean contains(String string, boolean sensitive){
+        if (sensitive){
+            return stringMan.contains(string);
+        }
+        else {
+            return stringMan.toLowerCase().contains(string.toLowerCase());
+        }
+    }
+
+    /**
+     * Returns true if and only if the s1 contains another specific string under the condition of its sensitivity.
+     * @param s1 The specific string to check.
+     * @param s2 The string to search for.
+     * @param sensitive The specific string is either sensitive to the upper/lower case or not.
+     * @return True if s1 contains s2, false otherwise.
+     */
+    public static boolean contains(String s1, String s2, boolean sensitive){
+        return new StringMan(s1).contains(s2, sensitive);
+    }
+
+    /**
+     * Returns true if and only if the stringMan contains all the strings in a specific array.
+     * @param strings The string array to search for.
+     * @return True if stringMan contains all the strings in the array, false otherwise.
+     */
+    public boolean containsAll(String[] strings){
+        int len = strings.length;
+        int count = 0;
+        for (int i = 0; i < len; i++){
+            if (stringMan.contains(strings[i])){
+                count++;
+            }
+        }
+        if (len == count){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Returns true if and only if the string contains all the strings in a specific array.
+     * @param string The specific string to check.
+     * @param strings The string array to search for.
+     * @return True if string contains all the strings in the array, false otherwise.
+     */
+    public static boolean containsAll(String string, String[] strings){
+        return new StringMan(string).containsAll(strings);
+    }
+
+    /**
+     * Returns true if and only if the stringMan contains all the strings in a specific array in terms of its items' sensitivity.
+     * @param strings The string array to search for.
+     * @param sensitive All of the strings in the specific array are either sensitive to upper/lower case or not.
+     * @return True if stringMan contains all the strings in the array, false otherwise.
+     */
+    public boolean containsAll(String[] strings, boolean sensitive){
+        if (sensitive){
+            return containsAll(strings);
+        }
+        else {
+            int len = strings.length;
+            int count = 0;
+            for (int i = 0; i < len; i++){
+                if (stringMan.toLowerCase().contains(strings[i].toLowerCase())){
+                    count++;
+                }
+            }
+            if (len == count){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
+    /**
+     * Returns true if and only if the string contains all the strings in a specific array in terms of its items' sensitivity.
+     * @param string The specific string to check.
+     * @param strings The string array to search to search for.
+     * @param sensitive All of the strings in the specific array are either sensitive to upper/lower case or not.
+     * @return True if string contains all the strings in the array, false otherwise.
+     */
+    public static boolean containsAll(String string, String[] strings, boolean sensitive){
+        return new StringMan(string).containsAll(strings, sensitive);
+    }
+
+    /**
+     * Returns true if and only if the stringMan contains any string in a specific array.
+     * @param strings The string array to search for.
+     * @return True if stringMan contains any string in the array, false otherwise.
+     */
+    public boolean containsAny(String[] strings){
+        int len = strings.length;
+        int count = 0;
+        for (int i = 0; i < len; i++){
+            if (stringMan.contains(strings[i])){
+                count++;
+                break;
+            }
+        }
+        if (count != 0){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
+     * Returns true if and only if the string contains any string in a specific array.
+     * @param string The specific string to check.
+     * @param strings The string array to search for.
+     * @return True if string contains any string in the array, false otherwise.
+     */
+    public static boolean containsAny(String string, String[] strings){
+        return new StringMan(string).containsAny(strings);
+    }
+
+    /**
+     * Returns true if and only if the stringMan contains any string in a specific array in terms of its items' sensitivity.
+     * @param strings The string array to search for.
+     * @param sensitive All of the strings in the specific array are either sensitive to upper/lower case or not.
+     * @return True if stringMan contains any string in the array, false otherwise.
+     */
+    public boolean containsAny(String[] strings, boolean sensitive){
+        if (sensitive){
+            return containsAny(strings);
+        }
+        else {
+            int len = strings.length;
+            int count = 0;
+            for (int i = 0; i < len; i++){
+                if (stringMan.toLowerCase().contains(strings[i].toLowerCase())){
+                    count++;
+                    break;
+                }
+            }
+            if (count != 0){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
+    /**
+     * Returns true if and only if the string contains any string in a specific array in terms of its items' sensitivity.
+     * @param string The specific string to check.
+     * @param strings The string array to search for.
+     * @param sensitive All of the strings in the specific array are either sensitive to upper/lower case or not.
+     * @return True if string contains any string in the array, false otherwise.
+     */
+    public static boolean containsAny(String string, String[] strings, boolean sensitive){
+        return new StringMan(string).containsAny(strings, sensitive);
+    }
+
+    /**
+     * Returns a string made up of num substrings.
+     * @param str The substring to clone.
+     * @param num The number of the specific substring.
+     * @return A string made up of num substrings.
+     */
     public static String getConsecutive(String str, int num){
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < num; i++){

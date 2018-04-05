@@ -59,6 +59,14 @@ public class StringManTest {
 
         System.out.println("Shuffle: panda -> " + StringMan.shuffle("panda"));
 
+        System.out.println("ContainsAll test 1: s1 = \"StringMan is useful\", s2 = {\"is\", \"useful\"}\n" + new StringMan("StringMan is useful").containsAll(new String[]{"is", "useful"}));
+
+        System.out.println("ContainsAll test 2: s1 = \"StringMan is useful\", s2 = {\"Is\", \"Useful\"}\n" + new StringMan("StringMan is useful").containsAll(new String[]{"Is", "Useful"}, false));
+
+        System.out.println("ContainsAny test 1: s1 = \"StringMan is useful\", s2 = {\"is\", \"cool\"}\n" + new StringMan("StringMan is useful").containsAny(new String[]{"is", "cool"}));
+
+        System.out.println("ContainsAny test 2: s1 = \"StringMan is useful\", s2 = {\"Is\", \"Cool\"}\n" + new StringMan("StringMan is useful").containsAny(new String[]{"Is", "Cool"}, false));
+
         System.out.println(StringMan.getConsecutive("=", 150));
 
     }
