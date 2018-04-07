@@ -76,6 +76,45 @@ public class StringMan {
         return new StringMan(origin).allIndexesOf(str);
     }
 
+    public int[] allIndexesOf(String str, boolean sensitive){
+        if (sensitive){
+            return allIndexesOf(str);
+        }
+        else {
+            List<Integer> indexesList = new ArrayList<>();
+            int index = stringMan.toLowerCase().indexOf(str.toLowerCase());
+            while (index != -1){
+                indexesList.add(index);
+                index = stringMan.toLowerCase().indexOf(str.toLowerCase(), index += str.length());
+            }
+            int[] indexes = new int[indexesList.size()];
+            for (int i = 0; i < indexes.length; i++){
+                indexes[i] = indexesList.get(i);
+            }
+            return indexes;
+        }
+    }
+
+    public static int[] getAllIndexes(String origin, String str, boolean sensitive){
+        return new StringMan(origin).allIndexesOf(str, sensitive);
+    }
+
+    public int firstIndexOf(String str){
+        return stringMan.indexOf(str);
+    }
+
+    public static int firstIndex(String origin, String substring){
+        return origin.indexOf(substring);
+    }
+
+    public int lastIndexOf(String str){
+        return stringMan.lastIndexOf(str);
+    }
+
+    public static int lastIndex(String orgin, String substring){
+        return orgin.lastIndexOf(substring);
+    }
+
     /**
      * Generates a string by picking random character from the dictionary.
      * @param length The length of the string to generate.
@@ -783,6 +822,46 @@ public class StringMan {
      */
     public static boolean containsAny(String string, String[] strings, boolean sensitive){
         return new StringMan(string).containsAny(strings, sensitive);
+    }
+
+    public int countSubstring(String substring){
+        return allIndexesOf(substring).length;
+    }
+
+    public static int countSubstring(String origin, String substring){
+        return getAllIndexes(origin, substring).length;
+    }
+
+    public int countSubstring(String substring, boolean sensitive){
+        return allIndexesOf(substring, sensitive).length;
+    }
+
+    public static int countSubstring(String origin, String substring, boolean sensitive){
+        return getAllIndexes(origin, substring, sensitive).length;
+    }
+
+    public String stringBetween(String identifier1, String identifier2){
+        if(stringMan != null && stringMan.length() > 0){
+            int firstIndex = firstIndex(stringMan, identifier1);
+            int lastIndex = lastIndex(stringMan, identifier2);
+            StringMan stringMan = new StringMan();
+            String [] strings = toStringArray(this.stringMan.substring(firstIndex, lastIndex + 1));
+            stringMan.append(strings[0]);
+            for (String s : strings){
+                if (s.matches("\\w")){
+                    stringMan.append(s);
+                }
+            }
+            stringMan.append(strings[strings.length - 1]);
+            return stringMan.toString();
+        }
+        else {
+            return null;
+        }
+    }
+
+    public static String getStringBetween(String origin, String identifier1, String identifier2){
+        return new StringMan(origin).stringBetween(identifier1, identifier2);
     }
 
     /**

@@ -67,6 +67,12 @@ public class StringManTest {
 
         System.out.println("ContainsAny test 2: s1 = \"StringMan is useful\", s2 = {\"Is\", \"Cool\"}\n" + new StringMan("StringMan is useful").containsAny(new String[]{"Is", "Cool"}, false));
 
+        System.out.println("Count substring test: string = \"aaaAAA aaa\", substring = \"aaa\"\n" + new StringMan("aaaAAA aaa").countSubstring("aaa"));
+
+        System.out.println(Arrays.toString(new StringMan("aaaAAA aaa").allIndexesOf("aaa", true)));
+
+        System.out.println(StringMan.getStringBetween("[abc], [def]", "[", "]"));
+
         System.out.println(StringMan.getConsecutive("=", 150));
 
     }
