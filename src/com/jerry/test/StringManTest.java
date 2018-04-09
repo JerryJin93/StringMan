@@ -73,6 +73,12 @@ public class StringManTest {
 
         System.out.println(StringMan.getStringBetween("[abc], [def]", "[", "]"));
 
+        System.out.println(new StringMan("a").paddingRight("0", 10));
+
+        System.out.println("Remove non-words test: origin = \"a/*-d..\", result: " + new StringMan("a/*-d..").removeNonWords());
+
+        System.out.println(new StringMan("a  da d b  c ").shrinkSpaces());
+
         System.out.println(StringMan.getConsecutive("=", 150));
 
     }

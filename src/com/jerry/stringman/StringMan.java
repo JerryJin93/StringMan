@@ -1,5 +1,7 @@
 package com.jerry.stringman;
 
+import com.sun.istack.internal.NotNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -202,6 +204,15 @@ public class StringMan {
         else {
             setStringMan(str);
         }
+        return this;
+    }
+
+    public StringMan insert(int offset, String toInsert, int num){
+        StringMan stringMan = new StringMan();
+        for (int i = 0; i < num; i++){
+            stringMan.append(toInsert);
+        }
+        insert(offset, stringMan.toString());
         return this;
     }
 
@@ -862,6 +873,76 @@ public class StringMan {
 
     public static String getStringBetween(String origin, String identifier1, String identifier2){
         return new StringMan(origin).stringBetween(identifier1, identifier2);
+    }
+
+    public StringMan paddingLeft(String toInsert, int num){
+        return insert(0, toInsert, num);
+    }
+
+    public static String paddingLeft(String origin, String toInsert, int num){
+        return new StringMan(origin).paddingLeft(toInsert, num).toString();
+    }
+
+    public StringMan paddingRight(String toInsert, int num){
+        return insert(stringMan.length(), toInsert, num);
+    }
+
+    public static String paddingRight(String origin, String toInsert, int num){
+        return new StringMan(origin).paddingRight(toInsert, num).toString();
+    }
+
+    public StringMan removeNonWords(){
+        StringMan stringMan = new StringMan();
+        String[] strings = toStringArray();
+        for (String s : strings){
+            if (s.matches("\\w")){
+                stringMan.append(s);
+            }
+        }
+        setStringMan(stringMan.toString());
+        return this;
+    }
+
+    public static String removeNonWords(String origin){
+        return new StringMan(origin).removeNonWords().toString();
+    }
+
+    public int numberOfConsecutiveSpaces(){
+        String[] strings = toStringArray();
+        int[] indexesOfSpace = allIndexesOf(" ");
+        int parts = 0;
+        if (indexesOfSpace.length != 0){
+            parts = 1;
+            for (int i = 0; i < indexesOfSpace.length; i++){
+                if (i + 1 < indexesOfSpace.length){
+                    if (indexesOfSpace[i + 1] - indexesOfSpace[i] > 1){
+                        parts++;
+                    }
+                }
+            }
+        }
+        return parts;
+    }
+
+    public StringMan deleteSpaces(){
+        String[] strings = toStringArray();
+        int[] indexesOfSpace = allIndexesOf(" ");
+        // TODO: 2018/4/9
+        return this;
+    }
+
+    public static String deleteSpaces(String origin){
+        return new StringMan(origin).deleteSpaces().toString();
+    }
+
+    public StringMan shrinkSpaces(){
+        int parts = numberOfConsecutiveSpaces();
+        // TODO: 2018/4/9
+        return this;
+    }
+
+    public static String shrinkSpaces(String origin){
+        return new StringMan(origin).shrinkSpaces().toString();
     }
 
     /**
