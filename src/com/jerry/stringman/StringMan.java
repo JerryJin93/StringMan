@@ -924,10 +924,65 @@ public class StringMan {
         return parts;
     }
 
+    public int[][] allIndexesOfSpace(){
+        int[] indexesOfSpace = allIndexesOf(" ");
+        int[] breakPointIndexes;
+        List<Integer> breakPointIndexesList = new ArrayList<>();
+        List<Integer> tmp = new ArrayList<>();
+        List<List<Integer>> breakPointIndexesTwoDimensionsList = new ArrayList<>();
+
+        breakPointIndexesList.add(indexesOfSpace[0]);
+        for (int i = 1; i < indexesOfSpace.length; i++){
+            if (indexesOfSpace[i] != indexesOfSpace[i - 1] + 1){
+                breakPointIndexesList.add(indexesOfSpace[i]);
+            }
+        }
+        breakPointIndexes = integerListToArray(breakPointIndexesList);
+        int[][] allIndexesOfSpace = new int[breakPointIndexes.length][];
+
+        for(int i = 0; i < breakPointIndexes.length; i++){
+            for (int j = 0; j < indexesOfSpace.length; j++){
+                if (indexesOfSpace[j] != breakPointIndexes[i]){
+                    tmp.add(indexesOfSpace[j]);
+                }
+                else {
+                    breakPointIndexesTwoDimensionsList.add(tmp);
+                    tmp.clear();
+                    break;
+                }
+            }
+        }
+
+        for (int i = 0; i < breakPointIndexes.length; i++){
+            allIndexesOfSpace[i] = integerListToArray(breakPointIndexesTwoDimensionsList.get(i));
+        }
+
+        for (int i = 0; i < allIndexesOfSpace.length; i++){
+            System.out.println(Arrays.toString(allIndexesOfSpace[i]));
+        }
+
+
+        return allIndexesOfSpace;
+    }
+
+    public StringMan trim(){
+        setStringMan(stringMan.trim());
+        return this;
+    }
+
+    public static String trim(String str){
+        return str.trim();
+    }
+
     public StringMan deleteSpaces(){
         String[] strings = toStringArray();
-        int[] indexesOfSpace = allIndexesOf(" ");
-        // TODO: 2018/4/9
+        StringMan stringMan = new StringMan();
+        for (int i = 0; i < strings.length; i++){
+            if (!strings[i].equals(" ")){
+                stringMan.append(strings[i]);
+            }
+        }
+        setStringMan(stringMan.toString());
         return this;
     }
 
@@ -938,6 +993,11 @@ public class StringMan {
     public StringMan shrinkSpaces(){
         int parts = numberOfConsecutiveSpaces();
         // TODO: 2018/4/9
+        stringMan.trim();
+        int numberOfSpaces = countSubstring(" ");
+        int firstIndexOfSpaces = firstIndexOf(" ");
+        stringMan.replace(" ", "");
+        //insert(firstIndexOfSpaces, " ");
         return this;
     }
 
