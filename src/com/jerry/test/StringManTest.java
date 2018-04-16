@@ -77,9 +77,9 @@ public class StringManTest {
 
         System.out.println("Remove non-words test: origin = \"a/*-d..\", result: " + new StringMan("a/*-d..").removeNonWords());
 
-        System.out.println(new StringMan("a  da d b  c ").trim());
+        System.out.println(new StringMan("a  da d b  c ").trim()); //spaces test
 
-        System.out.println(Arrays.toString(new StringMan(" a b  c b").allIndexesOfSpace()));
+        System.out.println(new StringMan(" a  b   fff c b").shrinkSpaces());
 
         System.out.println(StringMan.getConsecutive("=", 150));
 

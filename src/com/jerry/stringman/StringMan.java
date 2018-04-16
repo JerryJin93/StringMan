@@ -11,8 +11,6 @@ public class StringMan {
 
     private String stringMan;
 
-    public int[] pattern;
-
     private static final char[] DICTIONARY = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
@@ -35,6 +33,42 @@ public class StringMan {
 
     public StringMan(StringBuilder builder) {
         stringMan = new String(builder);
+    }
+
+    public StringMan(String[] strings){
+        append(strings);
+    }
+
+    public StringMan(List<String> stringList){
+        append(stringList);
+    }
+
+    public StringMan(StringMan stringMan){
+        setStringMan(stringMan.toString());
+    }
+
+    public StringMan(boolean b){
+        setStringMan(String.valueOf(b));
+    }
+
+    public StringMan(char c){
+        setStringMan(String.valueOf(c));
+    }
+
+    public StringMan(byte b){
+        setStringMan(String.valueOf(b));
+    }
+
+    public StringMan(int i){
+        setStringMan(String.valueOf(i));
+    }
+
+    public StringMan(float f){
+        setStringMan(String.valueOf(f));
+    }
+
+    public StringMan(double d){
+        setStringMan(String.valueOf(d));
     }
 
     public String getStringMan() {
@@ -171,8 +205,6 @@ public class StringMan {
         return this;
     }
 
-//    public abstract StringMan append(Object o);
-
     public static String appendArray(String... strings){
         StringBuilder builder = new StringBuilder();
         for (String str : strings){
@@ -190,6 +222,13 @@ public class StringMan {
     public StringMan appendMultiple(String... strings){
         String str = stringOf(strings);
         this.append(str);
+        return this;
+    }
+
+    public StringMan append(List<String> stringList){
+        for (String s : stringList){
+            append(s);
+        }
         return this;
     }
 
@@ -262,6 +301,11 @@ public class StringMan {
 
     public static String delete(String origin, int start, int end){
         return new StringMan(origin).delete(start, end).toString();
+    }
+
+    public StringMan clear(){
+        setStringMan("");
+        return this;
     }
 
     public int length(){
@@ -402,6 +446,27 @@ public class StringMan {
 
     public static String detachAllSurrounds(String origin, String prefix, String suffix){
         return new StringMan(origin).detachAllSurrounds(prefix, suffix).toString();
+    }
+
+    public boolean isEnclosedBy(String prefix, String suffix){
+        if (stringMan == null){
+            throw new IllegalArgumentException("The stringMan itself can't be null.");
+        }
+        if (prefix == null){
+            throw new IllegalArgumentException("Prefix can't be empty.");
+        }
+        if (suffix == null){
+            throw new IllegalArgumentException("Suffix can't be empty.");
+        }
+        return stringMan.startsWith(prefix) && stringMan.endsWith(suffix);
+    }
+
+    public static boolean isEnclosedBy(String origin, String prefix, String suffix){
+        return new StringMan(origin).isEnclosedBy(prefix, suffix);
+    }
+
+    public boolean isEnclosedBy(String surround){
+        return isEnclosedBy(surround, surround);
     }
 
 //    public String encode(){
@@ -907,64 +972,6 @@ public class StringMan {
         return new StringMan(origin).removeNonWords().toString();
     }
 
-    public int numberOfConsecutiveSpaces(){
-        String[] strings = toStringArray();
-        int[] indexesOfSpace = allIndexesOf(" ");
-        int parts = 0;
-        if (indexesOfSpace.length != 0){
-            parts = 1;
-            for (int i = 0; i < indexesOfSpace.length; i++){
-                if (i + 1 < indexesOfSpace.length){
-                    if (indexesOfSpace[i + 1] - indexesOfSpace[i] > 1){
-                        parts++;
-                    }
-                }
-            }
-        }
-        return parts;
-    }
-
-    public int[][] allIndexesOfSpace(){
-        int[] indexesOfSpace = allIndexesOf(" ");
-        int[] breakPointIndexes;
-        List<Integer> breakPointIndexesList = new ArrayList<>();
-        List<Integer> tmp = new ArrayList<>();
-        List<List<Integer>> breakPointIndexesTwoDimensionsList = new ArrayList<>();
-
-        breakPointIndexesList.add(indexesOfSpace[0]);
-        for (int i = 1; i < indexesOfSpace.length; i++){
-            if (indexesOfSpace[i] != indexesOfSpace[i - 1] + 1){
-                breakPointIndexesList.add(indexesOfSpace[i]);
-            }
-        }
-        breakPointIndexes = integerListToArray(breakPointIndexesList);
-        int[][] allIndexesOfSpace = new int[breakPointIndexes.length][];
-
-        for(int i = 0; i < breakPointIndexes.length; i++){
-            for (int j = 0; j < indexesOfSpace.length; j++){
-                if (indexesOfSpace[j] != breakPointIndexes[i]){
-                    tmp.add(indexesOfSpace[j]);
-                }
-                else {
-                    breakPointIndexesTwoDimensionsList.add(tmp);
-                    tmp.clear();
-                    break;
-                }
-            }
-        }
-
-        for (int i = 0; i < breakPointIndexes.length; i++){
-            allIndexesOfSpace[i] = integerListToArray(breakPointIndexesTwoDimensionsList.get(i));
-        }
-
-        for (int i = 0; i < allIndexesOfSpace.length; i++){
-            System.out.println(Arrays.toString(allIndexesOfSpace[i]));
-        }
-
-
-        return allIndexesOfSpace;
-    }
-
     public StringMan trim(){
         setStringMan(stringMan.trim());
         return this;
@@ -975,14 +982,9 @@ public class StringMan {
     }
 
     public StringMan deleteSpaces(){
-        String[] strings = toStringArray();
-        StringMan stringMan = new StringMan();
-        for (int i = 0; i < strings.length; i++){
-            if (!strings[i].equals(" ")){
-                stringMan.append(strings[i]);
-            }
-        }
-        setStringMan(stringMan.toString());
+//        StringMan stringMan = new StringMan(getStringMan().split("\\s+"));
+//        setStringMan(stringMan.toString());
+        deleteString(" ");
         return this;
     }
 
@@ -991,13 +993,8 @@ public class StringMan {
     }
 
     public StringMan shrinkSpaces(){
-        int parts = numberOfConsecutiveSpaces();
-        // TODO: 2018/4/9
-        stringMan.trim();
-        int numberOfSpaces = countSubstring(" ");
-        int firstIndexOfSpaces = firstIndexOf(" ");
-        stringMan.replace(" ", "");
-        //insert(firstIndexOfSpaces, " ");
+        trim();
+        setStringMan(stringMan.replaceAll("\\s\\s+", " "));
         return this;
     }
 
