@@ -81,6 +81,10 @@ public class StringManTest {
 
         System.out.println(new StringMan(" a  b   fff c b").shrinkSpaces());
 
+        System.out.println(new StringMan(" aaa \n\n\nb \n\n\n fff\n\n\n").shrinkEmptyLines());
+
+        System.out.println(new StringMan("\n\napple\n is delicious!\n\n\n\n").trimEmptyLines());
+
         System.out.println(StringMan.getConsecutive("=", 150));
 
     }

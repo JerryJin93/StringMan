@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="StringMan:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/StringMan_jar</output-path>
+    <root id="archive" name="StringMan.jar">
+      <element id="module-output" name="StringMan" />
+    </root>
+  </artifact>
+</component>

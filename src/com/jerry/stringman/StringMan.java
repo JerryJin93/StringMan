@@ -395,11 +395,11 @@ public class StringMan {
 
     public StringMan detachSurround(String prefix, String suffix){
         if (stringMan != null){
-            if (stringMan.contains(prefix)){
+            if (stringMan.startsWith(prefix)){
                 delete(0, prefix.length());
             }
-            if (stringMan.contains(suffix)){
-                int indexOfSuffix = stringMan.indexOf(suffix);
+            if (stringMan.endsWith(suffix)){
+                int indexOfSuffix = stringMan.lastIndexOf(suffix);
                 delete(indexOfSuffix, indexOfSuffix + suffix.length());
             }
         }
@@ -972,6 +972,36 @@ public class StringMan {
         return new StringMan(origin).removeNonWords().toString();
     }
 
+    public StringMan replace(String old, String replacer){
+        setStringMan(stringMan.replace(old, replacer));
+        return this;
+    }
+
+    public static String replace(String origin, String old, String replacer){
+        return new StringMan(origin).replace(old, replacer).toString();
+    }
+
+    public StringMan replace(int start, int end, String replacer){
+        setStringMan(new StringBuilder(stringMan).replace(start, end, replacer).toString());
+        return this;
+    }
+
+    public static String replace(String origin, int start, int end, String replacer) {
+        return new StringMan(origin).replace(start, end, replacer).toString();
+    }
+
+    public boolean startsWith(String prefix) {
+        return stringMan.startsWith(prefix);
+    }
+
+    public boolean startsWith(String prefix, int offset) {
+        return stringMan.startsWith(prefix, offset);
+    }
+
+    public boolean endsWith(String suffix) {
+        return stringMan.endsWith(suffix);
+    }
+
     public StringMan trim(){
         setStringMan(stringMan.trim());
         return this;
@@ -979,6 +1009,19 @@ public class StringMan {
 
     public static String trim(String str){
         return str.trim();
+    }
+
+    public StringMan trimEmptyLines() {
+
+        while (startsWith("\n") || endsWith("\n")){
+            detachSurround("\n", "\n");
+        }
+
+        return this;
+    }
+
+    public static String trimEmptyLines(String origin){
+        return new StringMan(origin).trimEmptyLines().toString();
     }
 
     public StringMan deleteSpaces(){
@@ -1000,6 +1043,16 @@ public class StringMan {
 
     public static String shrinkSpaces(String origin){
         return new StringMan(origin).shrinkSpaces().toString();
+    }
+
+    public StringMan shrinkEmptyLines(){
+        trimEmptyLines();
+        setStringMan(stringMan.replaceAll("\n\n+", "\n"));
+        return this;
+    }
+
+    public static String shrinkEmptyLines(String origin) {
+        return new StringMan(origin).shrinkEmptyLines().toString();
     }
 
     /**
